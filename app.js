@@ -9,13 +9,14 @@ app.get('/', function(req, res) {
 });
 
 io.on('connection', function(socket) {
-  console.log(io.sockets.clients())
+    //console.log(id)
 
   socket.on('disconnect', function() {
     io.emit('info', '一位用户退出');
   });
 
   socket.on('chat message', function(data) {
+   
     console.log(data.name + ':' + data.msg);
     io.emit('get', data);
   });
